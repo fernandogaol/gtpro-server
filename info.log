@@ -1,0 +1,29 @@
+{"message":"Project not found","level":"error"}
+{"message":"Project not found","level":"error"}
+{"message":"Project not found","level":"error"}
+{"message":"Project not found","level":"error"}
+{"message":"Project not found","level":"error"}
+{"message":"Project not found","level":"error"}
+{"message":"User not found","level":"error"}
+{"message":"User not found","level":"error"}
+{"message":"User has been deleted","level":"info"}
+{"message":"User not found","level":"error"}
+{"message":"User has been deleted","level":"info"}
+{"message":"User not found","level":"error"}
+{"message":"User not found","level":"error"}
+{"message":"User not found","level":"error"}
+{"message":"title is required","level":"info"}
+{"message":"user_id is required","level":"info"}
+{"message":"new project created with id number 6","level":"info"}
+{"message":"new project created with id number 7","level":"info"}
+{"message":"new project created with id number 8","level":"info"}
+{"message":"project was deleted","level":"info"}
+{"message":"project was updated","level":"info"}
+{"message":"user doesn't exist","level":"error"}
+{"message":"user doesn't exist","level":"error"}
+{"message":"list was deleted","level":"info"}
+{"message":"user doesn't exist","level":"error"}
+{"message":"new project created with id number 9","level":"info"}
+{"message":"title is required","level":"error"}
+{"message":"user_id is required","level":"error"}
+{"message":"new project created with id number 10","level":"info"}

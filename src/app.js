@@ -6,6 +6,8 @@ const helmet = require('helmet');
 const { NODE_ENV } = require('./config');
 const app = express();
 const usersRouter = require('../src/users/users-route');
+const projectsRouter = require('../src/projects/projects-route');
+const listsRouter = require('../src/lists/lists-route');
 
 const morganOption = NODE_ENV === 'production' ? 'tiny' : 'common';
 
@@ -14,6 +16,8 @@ app.use(helmet());
 app.use(cors());
 
 app.use('/api/users', usersRouter);
+app.use('/api/projects', projectsRouter);
+app.use('/api/lists', listsRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello, world!');
