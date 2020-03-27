@@ -7,36 +7,42 @@ const bodyParser = express.json();
 
 const listsRouter = express.Router();
 
-listsRouter.route('/').get((req, res, next) => {
-  ListsService.getAllLists(req.app.get('db'))
-    .then(lists => {
-      res.json(lists.map(ListsService.serializeList));
-    })
-    .catch(next);
-});
-//   .post(bodyParser, (req, res, next) => {
-//     const { title, user_id } = req.body;
-//     const newlist = { title, user_id };
+listsRouter
+  .route('/')
+  .get((req, res, next) => {
+    ListsService.getAllLists(req.app.get('db'))
+      .then(lists => {
+        res.json(lists.map(ListsService.serializeList));
+      })
+      .catch(next);
+  })
+  .post(bodyParser, (req, res, next) => {
+    const { title, project_id } = req.body;
+    const newList = { title, project_id };
 
-//     for (const field of ['title', 'user_id']) {
-//       if (!newProject[field]) {
-//         logger.error(`${field} is required`);
-//         return res
-//           .status(400)
-//           .send({ error: { message: `${field} is required` } });
-//       }
-//     }
-//     ProjectsService.insertProject(req.app.get('db'), newProject).then(
-//       project => {
-//         logger.info(`new project created with id number ${project.id}`);
-//         res
-//           .status(201)
-//           .location(`/api/projects/${project.id}`)
-//           .json(ProjectsService.serializedProject(project));
-//         // .send(project);
-//       }
-//     );
-//   });
+    for (const field of ['title', 'project_id']) {
+      if (!newList[field]) {
+        logger.error(`${field} is required`);
+        return res
+          .status(400)
+          .send({ error: { message: `${field} is required` } });
+      }
+    }
+
+    ListsService.listExists(req.app.get('db'), title).then(listExists => {
+      if (listExists)
+        return res.status(400).json({ error: `list name already exists` });
+
+      return ListsService.insertList(req.app.get('db'), newList).then(list => {
+        logger.info(`new project created with id number ${list.id}`);
+        res
+          .status(201)
+          .location(`/api/projects/${list.id}`)
+          .json(ListsService.serializeList(list));
+        // .send(project);
+      });
+    });
+  });
 
 listsRouter
   .route('/:list_id')
@@ -52,33 +58,38 @@ listsRouter
         res.status(204).end();
       })
       .catch(next);
+  })
+  .patch(bodyParser, (req, res, next) => {
+    const { title, project_id } = req.body;
+    const listToUpdate = { title, project_id };
+
+    const numberOfValues = Object.values(listToUpdate).filter(Boolean).length;
+
+    if (numberOfValues === 0) {
+      logger.error(`Invalid update without required fields`);
+      return res.status(400).json({
+        error: {
+          message: `Request body must contain 'title' and 'project_id`
+        }
+      });
+    }
+
+    ListsService.listExists(req.app.get('db'), title).then(listExists => {
+      if (listExists)
+        return res.status(400).json({ error: `list name already exists` });
+
+      ListsService.updateList(
+        req.app.get('db'),
+        req.params.list_id,
+        listToUpdate
+      )
+        .then(listUpdate => {
+          logger.info('list was updated');
+          res.status(204).end();
+        })
+        .catch(next);
+    });
   });
-//   .patch(bodyParser, (req, res, next) => {
-//     const { title, user_id } = req.body;
-//     const projectToUpdate = { title, user_id };
-
-//     const numberOfValues = Object.values(projectToUpdate).filter(Boolean)
-//       .length;
-
-//     if (numberOfValues === 0) {
-//       logger.error(`Invalid update without required fields`);
-//       return res.status(400).json({
-//         error: {
-//           message: `Request body must contain 'title' and 'user_id`
-//         }
-//       });
-//     }
-//     ProjectsService.updateProject(
-//       req.app.get('db'),
-//       req.params.project_id,
-//       projectToUpdate
-//     )
-//       .then(projetUpdate => {
-//         logger.info('project was updated');
-//         res.status(204).end();
-//       })
-//       .catch(next);
-//   });
 
 async function checkListExists(req, res, next) {
   try {

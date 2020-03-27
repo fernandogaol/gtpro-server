@@ -2,6 +2,13 @@ const xss = require('xss');
 // const Treeize = require('treeize');
 
 const ListsService = {
+  listExists(db, title) {
+    return db
+      .from('gtpro_lists')
+      .where({ title })
+      .first()
+      .then(title => !!title);
+  },
   getAllLists(db) {
     return db.from('gtpro_lists').select('*');
   },
@@ -24,11 +31,11 @@ const ListsService = {
       .where({ id })
       .delete();
   },
-  updateProject(db, id, newProjectFields) {
+  updateList(db, id, newListFields) {
     return db
       .from('gtpro_lists')
       .where({ id })
-      .update(newProjectFields);
+      .update(newListFields);
   },
   serializeList(list) {
     return {

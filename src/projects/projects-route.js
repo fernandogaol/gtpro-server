@@ -28,14 +28,22 @@ projectsRouter
           .send({ error: { message: `${field} is required` } });
       }
     }
-    ProjectsService.insertProject(req.app.get('db'), newProject).then(
-      project => {
-        logger.info(`new project created with id number ${project.id}`);
-        res
-          .status(201)
-          .location(`/api/projects/${project.id}`)
-          .json(ProjectsService.serializeProject(project));
-        // .send(project);
+
+    ProjectsService.projectExists(req.app.get('db'), title).then(
+      projectExists => {
+        if (projectExists)
+          return res.status(400).json({ error: `project name already exists` });
+
+        ProjectsService.insertProject(req.app.get('db'), newProject).then(
+          project => {
+            logger.info(`new project created with id number ${project.id}`);
+            res
+              .status(201)
+              .location(`/api/projects/${project.id}`)
+              .json(ProjectsService.serializeProject(project));
+            // .send(project);
+          }
+        );
       }
     );
   });
@@ -70,16 +78,23 @@ projectsRouter
         }
       });
     }
-    ProjectsService.updateProject(
-      req.app.get('db'),
-      req.params.project_id,
-      projectToUpdate
-    )
-      .then(projetUpdate => {
-        logger.info('project was updated');
-        res.status(204).end();
-      })
-      .catch(next);
+    ProjectsService.projectExists(req.app.get('db'), title).then(
+      projectExists => {
+        if (projectExists)
+          return res.status(400).json({ error: `project name already exists` });
+
+        ProjectsService.updateProject(
+          req.app.get('db'),
+          req.params.project_id,
+          projectToUpdate
+        )
+          .then(projetUpdate => {
+            logger.info('project was updated');
+            res.status(204).end();
+          })
+          .catch(next);
+      }
+    );
   });
 
 async function checkProjectExists(req, res, next) {

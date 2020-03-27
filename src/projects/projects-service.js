@@ -2,8 +2,18 @@ const xss = require('xss');
 // const Treeize = require('treeize');
 
 const ProjectsService = {
+  projectExists(db, title) {
+    return db
+      .from('gtpro_projects')
+      .where({ title })
+      .first()
+      .then(title => !!title);
+  },
   getAllProjects(db) {
-    return db.from('gtpro_projects').select('*');
+    return db
+      .from('gtpro_projects AS gt')
+      .select('*')
+      .join('gtpro_users AS user', 'gt.user_id', 'user.id');
   },
 
   getProjectById(db, id) {

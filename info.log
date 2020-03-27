@@ -27,3 +27,22 @@
 {"message":"title is required","level":"error"}
 {"message":"user_id is required","level":"error"}
 {"message":"new project created with id number 10","level":"info"}
+{"message":"list was deleted","level":"info"}
+{"message":"title is required","level":"error"}
+{"message":"project_id is required","level":"error"}
+{"message":"project_id is required","level":"error"}
+{"message":"new project created with id number 6","level":"info"}
+{"message":"project was updated","level":"info"}
+{"message":"list was updated","level":"info"}
+{"message":"new project created with id number 7","level":"info"}
+{"message":"new project created with id number 8","level":"info"}
+{"message":"new project created with id number 9","level":"info"}
+{"message":"user_id is required","level":"error"}
+{"message":"project was updated","level":"info"}
+{"message":"project_id is required","level":"error"}
+{"message":"list was updated","level":"info"}
+{"message":"content is required","level":"error"}
+{"message":"list_id is required","level":"error"}
+{"message":"new project created with id number 5","level":"info"}
+{"message":"card was deleted","level":"info"}
+{"message":"card was updated","level":"info"}

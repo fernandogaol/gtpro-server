@@ -53,12 +53,12 @@ usersRouter.post('/', jsonBodyParser, (req, res, next) => {
       // return UsersService.hashPassword(password)
       //   .then(hashedPassword => {
       //     // PASSWORDS STILL NEED TO BE HASHED
-      //     const newUser = {
-      //       user_name,
-      //       password,
-      //       full_name,
-      //       date_created: 'now()'
-      // };
+      const newUser = {
+        user_name,
+        password,
+        full_name,
+        date_created: 'now()'
+      };
 
       return UsersService.insertUser(req.app.get('db'), newUser).then(user => {
         res
