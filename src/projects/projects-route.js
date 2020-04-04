@@ -2,6 +2,7 @@ const express = require('express');
 const ProjectsService = require('./projects-service');
 const logger = require('../logger');
 const bodyParser = express.json();
+const requireAuth = require('../../src/middleware/jwt-auth');
 // const { requireAuth } = require('../middleware/jwt-auth');
 // needs API KEY set
 
@@ -10,7 +11,7 @@ const projectsRouter = express.Router();
 projectsRouter
   .route('/')
   .get((req, res, next) => {
-    ProjectsService.getAllProjects(req.app.get('db'))
+    ProjectsService.getProjectByUserId(req.app.get('db'))
       .then(projects => {
         res.json(projects.map(ProjectsService.serializeProject));
       })
@@ -96,10 +97,18 @@ projectsRouter
       }
     );
   });
+projectsRouter.route('/user/:user_id').get((req, res, next) => {
+  const { user_id } = req.params;
+  ProjectsService.getProjectByUserId(req.app.get('db'), user_id)
+    .then(project => {
+      res.json(project);
+    })
+    .catch(next);
+});
 
 async function checkProjectExists(req, res, next) {
   try {
-    const project = await ProjectsService.getProjectById(
+    const project = await ProjectsService.getProjectByUserId(
       req.app.get('db'),
       req.params.project_id
     );

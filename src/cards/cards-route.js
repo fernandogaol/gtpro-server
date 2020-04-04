@@ -89,6 +89,14 @@ cardsRouter
         .catch(next);
     });
   });
+cardsRouter.route('/list/:list_id').get((req, res, next) => {
+  const { list_id } = req.params;
+  CardsService.getCardByListId(req.app.get('db'), list_id)
+    .then(card => {
+      res.json(card);
+    })
+    .catch(next);
+});
 
 async function checkCardExists(req, res, next) {
   try {

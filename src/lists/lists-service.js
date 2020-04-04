@@ -18,6 +18,10 @@ const ListsService = {
       .where({ id })
       .first();
   },
+
+  getListByProjectId(db, project_id) {
+    return ListsService.getAllLists(db).where({ project_id });
+  },
   insertList(db, newList) {
     return db
       .insert(newList)

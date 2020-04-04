@@ -9,6 +9,7 @@ const usersRouter = require('../src/users/users-route');
 const projectsRouter = require('../src/projects/projects-route');
 const listsRouter = require('../src/lists/lists-route');
 const cardsRouter = require('../src/cards/cards-route');
+const authRouter = require('../src/auth/auth-router');
 
 const morganOption = NODE_ENV === 'production' ? 'tiny' : 'common';
 
@@ -20,6 +21,7 @@ app.use('/api/users', usersRouter);
 app.use('/api/projects', projectsRouter);
 app.use('/api/lists', listsRouter);
 app.use('/api/cards', cardsRouter);
+app.use('/api/auth', authRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello, world!');

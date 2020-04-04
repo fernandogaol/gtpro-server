@@ -90,6 +90,14 @@ listsRouter
         .catch(next);
     });
   });
+listsRouter.route('/project/:project_id').get((req, res, next) => {
+  const { project_id } = req.params;
+  ListsService.getListByProjectId(req.app.get('db'), project_id)
+    .then(list => {
+      res.json(list);
+    })
+    .catch(next);
+});
 
 async function checkListExists(req, res, next) {
   try {

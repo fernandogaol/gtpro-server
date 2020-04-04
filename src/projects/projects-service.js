@@ -10,16 +10,16 @@ const ProjectsService = {
       .then(title => !!title);
   },
   getAllProjects(db) {
-    return db
-      .from('gtpro_projects AS gt')
-      .select('*')
-      .join('gtpro_users AS user', 'gt.user_id', 'user.id');
+    return db.from('gtpro_projects').select('*');
   },
 
   getProjectById(db, id) {
     return ProjectsService.getAllProjects(db)
       .where({ id })
       .first();
+  },
+  getProjectByUserId(db, user_id) {
+    return ProjectsService.getAllProjects(db).where({ user_id });
   },
   insertProject(db, newProject) {
     return db

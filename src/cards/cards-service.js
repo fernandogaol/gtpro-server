@@ -18,6 +18,9 @@ const CardsService = {
       .where({ id })
       .first();
   },
+  getCardByListId(db, list_id) {
+    return CardsService.getAllCards(db).where({ list_id });
+  },
   insertCard(db, newCard) {
     return db
       .insert(newCard)
