@@ -11,7 +11,7 @@ const jsonBodyParser = express.json();
 
 usersRouter.route('/').get((req, res, next) => {
   UsersService.getAllUsers(req.app.get('db'))
-    .then(users => {
+    .then((users) => {
       res.json(users.map(UsersService.serializeUser));
     })
     .catch(next);
@@ -26,12 +26,18 @@ usersRouter
   .delete((req, res, next) => {
     const { user_id } = req.params;
     UsersService.deleteUser(req.app.get('db'), user_id)
-      .then(user => {
+      .then((user) => {
         logger.info('user was deleted');
         res.status(204).end();
       })
       .catch(next);
   });
+// usersRouter
+//   .route('/:user_name')
+//   .all(checkUserNameExists)
+//   .get((req, res) => {
+//     res.json(UsersService.serializeUser(res.user));
+//   });
 
 usersRouter.post('/', jsonBodyParser, (req, res, next) => {
   const { password, user_name, full_name } = req.body;
@@ -40,13 +46,13 @@ usersRouter.post('/', jsonBodyParser, (req, res, next) => {
   for (const field of ['full_name', 'user_name', 'password'])
     if (!req.body[field])
       return res.status(400).json({
-        error: `Missing '${field}' in request body`
+        error: `Missing '${field}' in request body`,
       });
 
   if (passwordError) return res.status(400).json({ error: passwordError });
 
   UsersService.hasUserWithUserName(req.app.get('db'), user_name)
-    .then(hasUserWithUserName => {
+    .then((hasUserWithUserName) => {
       if (hasUserWithUserName)
         return res.status(400).json({ error: `Username already exists` });
 
@@ -57,15 +63,17 @@ usersRouter.post('/', jsonBodyParser, (req, res, next) => {
         user_name,
         password,
         full_name,
-        date_created: 'now()'
+        date_created: 'now()',
       };
 
-      return UsersService.insertUser(req.app.get('db'), newUser).then(user => {
-        res
-          .status(201)
-          .location(path.posix.join(req.originalUrl, `/${user.id}`))
-          .json(UsersService.serializeUser(user));
-      });
+      return UsersService.insertUser(req.app.get('db'), newUser).then(
+        (user) => {
+          res
+            .status(201)
+            .location(path.posix.join(req.originalUrl, `/${user.id}`))
+            .json(UsersService.serializeUser(user));
+        }
+      );
     })
 
     .catch(next);
@@ -81,7 +89,7 @@ async function checkUserExists(req, res, next) {
     if (!user) {
       logger.error(`user doesn't exist`);
       return res.status(404).json({
-        error: `user doesn't exist`
+        error: `user doesn't exist`,
       });
     }
     res.user = user;
@@ -90,5 +98,24 @@ async function checkUserExists(req, res, next) {
     next(error);
   }
 }
+// async function checkUserNameExists(req, res, next) {
+//   try {
+//     const user = await UsersService.getUserByUserName(
+//       req.app.get('db'),
+//       req.params.user_name
+//     );
+
+//     if (!user) {
+//       logger.error(`user name doesn't exist`);
+//       return res.status(404).json({
+//         error: `user name doesn't exist`,
+//       });
+//     }
+//     res.user = user;
+//     next();
+//   } catch (error) {
+//     next(error);
+//   }
+// }
 
 module.exports = usersRouter;

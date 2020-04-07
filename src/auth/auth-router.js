@@ -11,13 +11,13 @@ authRouter.post('/login', jsonBodyParser, (req, res, next) => {
   for (const [key, value] of Object.entries(loginUser))
     if (value == null)
       return res.status(400).json({
-        error: `Missing '${key}' in request body`
+        error: `Missing '${key}' in request body`,
       });
   AuthService.getUserWithUserName(req.app.get('db'), loginUser.user_name)
-    .then(dbUser => {
+    .then((dbUser) => {
       if (!dbUser)
         return res.status(400).json({
-          error: 'Incorrect user name or password'
+          error: 'Incorrect user name or password',
         });
       //   return AuthService.comparePasswords(
       //     loginUser.password,
@@ -30,8 +30,10 @@ authRouter.post('/login', jsonBodyParser, (req, res, next) => {
 
       const sub = dbUser.user_name;
       const payload = { user_id: dbUser.id };
+      const userId = dbUser.id;
       res.send({
-        authToken: AuthService.createJwt(sub, payload)
+        authToken: AuthService.createJwt(sub, payload),
+        userId,
       });
       //   });
     })

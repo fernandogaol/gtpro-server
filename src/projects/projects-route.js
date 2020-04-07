@@ -11,7 +11,7 @@ const projectsRouter = express.Router();
 projectsRouter
   .route('/')
   .get((req, res, next) => {
-    ProjectsService.getProjectByUserId(req.app.get('db'))
+    ProjectsService.getAllProjects(req.app.get('db'))
       .then(projects => {
         res.json(projects.map(ProjectsService.serializeProject));
       })

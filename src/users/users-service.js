@@ -18,6 +18,11 @@ const UsersService = {
       .where({ id })
       .first();
   },
+  getUserByUserName(db, user_name) {
+    return UsersService.getAllUsers(db)
+      .where({ user_name })
+      .first();
+  },
   insertUser(db, newUser) {
     return db
       .insert(newUser)
