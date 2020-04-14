@@ -48,3 +48,42 @@
 {"message":"card was updated","level":"info"}
 {"message":"project was deleted","level":"info"}
 {"message":"title is required","level":"error"}
+{"message":"user_id is required","level":"error"}
+{"message":"user_id is required","level":"error"}
+{"message":"user_id is required","level":"error"}
+{"message":"user_id is required","level":"error"}
+{"message":"user_id is required","level":"error"}
+{"message":"user_id is required","level":"error"}
+{"message":"title is required","level":"error"}
+{"message":"new project created with id number 6","level":"info"}
+{"message":"list was updated","level":"info"}
+{"message":"title is required","level":"error"}
+{"message":"user_id is required","level":"error"}
+{"message":"user_id is required","level":"error"}
+{"message":"user_id is required","level":"error"}
+{"message":"user_id is required","level":"error"}
+{"message":"new project created with id number 12","level":"info"}
+{"message":"new project created with id number 13","level":"info"}
+{"message":"new project created with id number 14","level":"info"}
+{"message":"new project created with id number 15","level":"info"}
+{"message":"new project created with id number 16","level":"info"}
+{"message":"new project created with id number 17","level":"info"}
+{"message":"new project created with id number 18","level":"info"}
+{"message":"new project created with id number 19","level":"info"}
+{"message":"title is required","level":"error"}
+{"message":"title is required","level":"error"}
+{"message":"title is required","level":"error"}
+{"message":"new project created with id number 20","level":"info"}
+{"message":"new project created with id number 21","level":"info"}
+{"message":"new project created with id number 22","level":"info"}
+{"message":"new project created with id number 23","level":"info"}
+{"message":"new project created with id number 24","level":"info"}
+{"message":"new project created with id number 25","level":"info"}
+{"message":"new project created with id number 26","level":"info"}
+{"message":"new project created with id number 27","level":"info"}
+{"message":"title is required","level":"error"}
+{"message":"new project created with id number 28","level":"info"}
+{"message":"new project created with id number 29","level":"info"}
+{"message":"new project created with id number 30","level":"info"}
+{"message":"user_id is required","level":"error"}
+{"message":"new project created with id number 31","level":"info"}

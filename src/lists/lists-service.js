@@ -7,16 +7,14 @@ const ListsService = {
       .from('gtpro_lists')
       .where({ title })
       .first()
-      .then(title => !!title);
+      .then((title) => !!title);
   },
   getAllLists(db) {
     return db.from('gtpro_lists').select('*');
   },
 
   getListById(db, id) {
-    return ListsService.getAllLists(db)
-      .where({ id })
-      .first();
+    return ListsService.getAllLists(db).where({ id }).first();
   },
 
   getListByProjectId(db, project_id) {
@@ -30,25 +28,19 @@ const ListsService = {
       .then(([list]) => list);
   },
   deleteList(db, id) {
-    return db
-      .from('gtpro_lists')
-      .where({ id })
-      .delete();
+    return db.from('gtpro_lists').where({ id }).delete();
   },
   updateList(db, id, newListFields) {
-    return db
-      .from('gtpro_lists')
-      .where({ id })
-      .update(newListFields);
+    return db.from('gtpro_lists').where({ id }).update(newListFields);
   },
   serializeList(list) {
     return {
       id: list.id,
       project_id: list.project_id,
       title: xss(list.title),
-      date_created: new Date(list.date_created)
+      date_created: new Date(list.date_created),
     };
-  }
+  },
 };
 
 module.exports = ListsService;

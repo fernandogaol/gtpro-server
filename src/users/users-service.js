@@ -8,20 +8,16 @@ const UsersService = {
       .from('gtpro_users')
       .where({ user_name })
       .first()
-      .then(user => !!user);
+      .then((user) => !!user);
   },
   getAllUsers(db) {
     return db.from('gtpro_users').select('*');
   },
   getUserById(db, id) {
-    return UsersService.getAllUsers(db)
-      .where({ id })
-      .first();
+    return UsersService.getAllUsers(db).where({ id }).first();
   },
   getUserByUserName(db, user_name) {
-    return UsersService.getAllUsers(db)
-      .where({ user_name })
-      .first();
+    return UsersService.getAllUsers(db).where({ user_name }).first();
   },
   insertUser(db, newUser) {
     return db
@@ -31,10 +27,7 @@ const UsersService = {
       .then(([user]) => user);
   },
   deleteUser(db, id) {
-    return db
-      .from('gtpro_users')
-      .where({ id })
-      .delete();
+    return db.from('gtpro_users').where({ id }).delete();
   },
   validatePassword(password) {
     if (password.length < 8) {
@@ -61,9 +54,9 @@ const UsersService = {
       full_name: xss(user.full_name),
       user_name: xss(user.user_name),
       date_created: new Date(user.date_created),
-      password: xss(user.password)
+      password: xss(user.password),
     };
-  }
+  },
 };
 
 module.exports = UsersService;
