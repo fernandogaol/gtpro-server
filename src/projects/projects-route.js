@@ -50,11 +50,11 @@ projectsRouter
   });
 
 projectsRouter
-  // .route('/:project_id')
-  // .all(checkProjectExists)
-  // .get((req, res) => {
-  //   res.json(ProjectsService.serializeProject(res.project));
-  // })
+  .route('/:project_id')
+  .all(checkProjectExists)
+  .get((req, res) => {
+    res.json(ProjectsService.serializeProject(res.project));
+  })
   .delete((req, res, next) => {
     const { project_id } = req.params;
     ProjectsService.deleteProject(req.app.get('db'), project_id)
@@ -99,7 +99,7 @@ projectsRouter
   });
 projectsRouter
   .route('/user/:user_id')
-  .all(checkProjectExists)
+  .all(checkUserProjectExists)
   .get((req, res, next) => {
     const { user_id } = req.params;
     ProjectsService.getProjectByUserId(req.app.get('db'), user_id)
@@ -109,11 +109,29 @@ projectsRouter
       .catch(next);
   });
 
-async function checkProjectExists(req, res, next) {
+async function checkUserProjectExists(req, res, next) {
   try {
     const project = await ProjectsService.getProjectByUserId(
       req.app.get('db'),
       req.params.user_id
+    );
+
+    if (!project)
+      return res.status(404).json({
+        error: `project doesn't exist`,
+      });
+
+    res.project = project;
+    next();
+  } catch (error) {
+    next(error);
+  }
+}
+async function checkProjectExists(req, res, next) {
+  try {
+    const project = await ProjectsService.getProjectById(
+      req.app.get('db'),
+      req.params.project_id
     );
 
     if (!project)
