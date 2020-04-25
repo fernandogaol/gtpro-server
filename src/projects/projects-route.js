@@ -60,7 +60,7 @@ projectsRouter
     ProjectsService.deleteProject(req.app.get('db'), project_id)
       .then((projectDeleted) => {
         logger.info('project was deleted');
-        res.status(204).end();
+        res.status(200);
       })
       .catch(next);
   })

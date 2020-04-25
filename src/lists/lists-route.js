@@ -57,7 +57,7 @@ listsRouter
     ListsService.deleteList(req.app.get('db'), list_id)
       .then((listDeleted) => {
         logger.info('list was deleted');
-        res.status(204).end();
+        res.status(200);
       })
       .catch(next);
   })
