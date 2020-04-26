@@ -29,21 +29,19 @@ cardsRouter
       }
     }
 
-    CardsService.cardExists(req.app.get('db'), content).then((cardExists) => {
-      if (cardExists)
-        return res.status(400).json({ error: `card name already exists` });
+    // CardsService.cardExists(req.app.get('db'), content).then((cardExists) => {
+    //   if (cardExists)
+    //     return res.status(400).json({ error: `card name already exists` });
 
-      return CardsService.insertCard(req.app.get('db'), newCard).then(
-        (card) => {
-          logger.info(`new project created with id number ${card.id}`);
-          res
-            .status(201)
-            .location(`/api/projects/${card.id}`)
-            .json(CardsService.serializeCard(card));
-        }
-      );
+    return CardsService.insertCard(req.app.get('db'), newCard).then((card) => {
+      logger.info(`new project created with id number ${card.id}`);
+      res
+        .status(201)
+        .location(`/api/cards/${card.id}`)
+        .json(CardsService.serializeCard(card));
     });
   });
+// });
 
 cardsRouter
   .route('/:card_id')

@@ -307,3 +307,40 @@
 {"message":"list_id is required","level":"error"}
 {"message":"list_id is required","level":"error"}
 {"message":"content is required","level":"error"}
+{"message":"new list created with id number 29","level":"info"}
+{"message":"title is required","level":"error"}
+{"message":"new list created with id number 30","level":"info"}
+{"message":"list_id is required","level":"error"}
+{"message":"new project created with id number 17","level":"info"}
+{"message":"new project created with id number 18","level":"info"}
+{"message":"new project created with id number 19","level":"info"}
+{"message":"new project created with id number 20","level":"info"}
+{"message":"card was deleted","level":"info"}
+{"message":"card was deleted","level":"info"}
+{"message":"card was deleted","level":"info"}
+{"message":"card was deleted","level":"info"}
+{"message":"card was deleted","level":"info"}
+{"message":"card was deleted","level":"info"}
+{"message":"card was deleted","level":"info"}
+{"message":"card was deleted","level":"info"}
+{"message":"card was deleted","level":"info"}
+{"message":"card was deleted","level":"info"}
+{"message":"card was deleted","level":"info"}
+{"message":"list was deleted","level":"info"}
+{"message":"list was deleted","level":"info"}
+{"message":"list was deleted","level":"info"}
+{"message":"new list created with id number 31","level":"info"}
+{"message":"new project created with id number 21","level":"info"}
+{"message":"new project created with id number 22","level":"info"}
+{"message":"new project created with id number 23","level":"info"}
+{"message":"project was deleted","level":"info"}
+{"message":"new project created with id number 7","level":"info"}
+{"message":"new project created with id number 8","level":"info"}
+{"message":"project was deleted","level":"info"}
+{"message":"project was deleted","level":"info"}
+{"message":"new project created with id number 9","level":"info"}
+{"message":"project was deleted","level":"info"}
+{"message":"new project created with id number 24","level":"info"}
+{"message":"card was deleted","level":"info"}
+{"message":"new list created with id number 32","level":"info"}
+{"message":"list was deleted","level":"info"}
