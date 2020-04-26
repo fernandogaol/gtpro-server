@@ -300,3 +300,10 @@
 {"message":"list was deleted","level":"info"}
 {"message":"new list created with id number 27","level":"info"}
 {"message":"list was deleted","level":"info"}
+{"message":"list was deleted","level":"info"}
+{"message":"new project created with id number 6","level":"info"}
+{"message":"new list created with id number 28","level":"info"}
+{"message":"list was deleted","level":"info"}
+{"message":"list_id is required","level":"error"}
+{"message":"list_id is required","level":"error"}
+{"message":"content is required","level":"error"}

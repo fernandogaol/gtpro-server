@@ -11,7 +11,7 @@ cardsRouter
   .route('/')
   .get((req, res, next) => {
     CardsService.getAllCards(req.app.get('db'))
-      .then(cards => {
+      .then((cards) => {
         res.json(cards.map(CardsService.serializeCard));
       })
       .catch(next);
@@ -29,17 +29,19 @@ cardsRouter
       }
     }
 
-    CardsService.cardExists(req.app.get('db'), content).then(cardExists => {
+    CardsService.cardExists(req.app.get('db'), content).then((cardExists) => {
       if (cardExists)
         return res.status(400).json({ error: `card name already exists` });
 
-      return CardsService.insertCard(req.app.get('db'), newCard).then(card => {
-        logger.info(`new project created with id number ${card.id}`);
-        res
-          .status(201)
-          .location(`/api/projects/${card.id}`)
-          .json(CardsService.serializeCard(card));
-      });
+      return CardsService.insertCard(req.app.get('db'), newCard).then(
+        (card) => {
+          logger.info(`new project created with id number ${card.id}`);
+          res
+            .status(201)
+            .location(`/api/projects/${card.id}`)
+            .json(CardsService.serializeCard(card));
+        }
+      );
     });
   });
 
@@ -52,7 +54,7 @@ cardsRouter
   .delete((req, res, next) => {
     const { card_id } = req.params;
     CardsService.deleteCard(req.app.get('db'), card_id)
-      .then(cardDeleted => {
+      .then((cardDeleted) => {
         logger.info('card was deleted');
         res.status(204).end();
       })
@@ -68,12 +70,12 @@ cardsRouter
       logger.error(`Invalid update without required fields`);
       return res.status(400).json({
         error: {
-          message: `Request body must contain 'content' and 'list_id`
-        }
+          message: `Request body must contain 'content' and 'list_id`,
+        },
       });
     }
 
-    CardsService.cardExists(req.app.get('db'), content).then(cardExists => {
+    CardsService.cardExists(req.app.get('db'), content).then((cardExists) => {
       if (cardExists)
         return res.status(400).json({ error: `card name already exists` });
 
@@ -82,7 +84,7 @@ cardsRouter
         req.params.card_id,
         cardToUpdate
       )
-        .then(cardUpdate => {
+        .then((cardUpdate) => {
           logger.info('card was updated');
           res.status(204).end();
         })
@@ -92,7 +94,7 @@ cardsRouter
 cardsRouter.route('/list/:list_id').get((req, res, next) => {
   const { list_id } = req.params;
   CardsService.getCardByListId(req.app.get('db'), list_id)
-    .then(card => {
+    .then((card) => {
       res.json(card);
     })
     .catch(next);
@@ -107,7 +109,7 @@ async function checkCardExists(req, res, next) {
 
     if (!card)
       return res.status(404).json({
-        error: `card doesn't exist`
+        error: `card doesn't exist`,
       });
 
     res.card = card;
