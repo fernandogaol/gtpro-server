@@ -16,18 +16,17 @@ authRouter.post('/login', jsonBodyParser, (req, res, next) => {
       });
   AuthService.getUserWithUserName(req.app.get('db'), loginUser.user_name)
     .then((dbUser) => {
-      if (!dbUser)
+      if (!dbUser) {
         return res.status(400).json({
-          error: 'Incorrect user name or password',
+          error: 'Incorrect username or password ',
         });
-      //   return AuthService.comparePasswords(
-      //     loginUser.password,
-      //     dbUser.password
-      //   ).then(compareMatch => {
-      //     if (!compareMatch)
-      //       return res.status(400).json({
-      //         error: 'Incorrect user name or password'
-      //       });
+      }
+      // AuthService.comparePasswords(loginUser.password, dbUser.password);
+      if (loginUser.password !== dbUser.password) {
+        return res.status(400).json({
+          error: 'Incorrect username or password',
+        });
+      }
 
       const sub = dbUser.user_name;
       const payload = { user_id: dbUser.id };
@@ -36,7 +35,6 @@ authRouter.post('/login', jsonBodyParser, (req, res, next) => {
         authToken: AuthService.createJwt(sub, payload),
         userId,
       });
-      //   });
     })
     .catch(next);
 });
