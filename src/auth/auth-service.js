@@ -5,10 +5,6 @@ const AuthService = {
   getUserWithUserName(db, user_name) {
     return db('gtpro_users').where({ user_name }).first();
   },
-  // comparePasswords(dbPassword, userPassword) {
-  //   console.log(dbPassword, userPassword);
-  //   return dbPassword === userPassword;
-  // },
   createJwt(subject, payload) {
     return jwt.sign(payload, config.JWT_SECRET, {
       subject,
