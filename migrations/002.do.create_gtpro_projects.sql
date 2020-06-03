@@ -4,3 +4,4 @@ CREATE TABLE gtpro_projects(
   title TEXT NOT NULL,
   date_created TIMESTAMP DEFAULT now() NOT NULL
 );
+

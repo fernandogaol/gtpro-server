@@ -30,10 +30,10 @@ projectsRouter
       }
     }
 
-    ProjectsService.projectExists(req.app.get('db'), title).then(
-      (projectExists) => {
-        if (projectExists)
-          return res.status(400).json({ error: `project name already exists` });
+    // ProjectsService.projectExists(req.app.get('db'), title).then(
+    //   (projectExists) => {
+    //     if (projectExists)
+    //       return res.status(400).json({ error: `project name already exists` });
 
         ProjectsService.insertProject(req.app.get('db'), newProject)
           .then((project) => {
@@ -45,8 +45,8 @@ projectsRouter
             // .send(project);
           })
           .catch(next);
-      }
-    );
+    //   }
+    // );
   });
 
 projectsRouter

@@ -345,3 +345,41 @@
 {"message":"new list created with id number 32","level":"info"}
 {"message":"list was deleted","level":"info"}
 {"message":"user doesn't exist","level":"error"}
+{"message":"user was deleted","level":"info"}
+{"message":"new project created with id number 10","level":"info"}
+{"message":"new list created with id number 33","level":"info"}
+{"message":"list was deleted","level":"info"}
+{"message":"new list created with id number 34","level":"info"}
+{"message":"new list created with id number 35","level":"info"}
+{"message":"list was deleted","level":"info"}
+{"message":"new list created with id number 36","level":"info"}
+{"message":"new list created with id number 37","level":"info"}
+{"message":"new project created with id number 25","level":"info"}
+{"message":"new project created with id number 26","level":"info"}
+{"message":"card was deleted","level":"info"}
+{"message":"new project created with id number 27","level":"info"}
+{"message":"card was deleted","level":"info"}
+{"message":"new project created with id number 28","level":"info"}
+{"message":"card was deleted","level":"info"}
+{"message":"new project created with id number 29","level":"info"}
+{"message":"new project created with id number 30","level":"info"}
+{"message":"new project created with id number 31","level":"info"}
+{"message":"card was deleted","level":"info"}
+{"message":"new list created with id number 38","level":"info"}
+{"message":"new list created with id number 39","level":"info"}
+{"message":"new list created with id number 40","level":"info"}
+{"message":"new list created with id number 41","level":"info"}
+{"message":"new list created with id number 42","level":"info"}
+{"message":"list was deleted","level":"info"}
+{"message":"list was deleted","level":"info"}
+{"message":"list was deleted","level":"info"}
+{"message":"list was deleted","level":"info"}
+{"message":"list was deleted","level":"info"}
+{"message":"new list created with id number 43","level":"info"}
+{"message":"new list created with id number 44","level":"info"}
+{"message":"new list created with id number 45","level":"info"}
+{"message":"new list created with id number 46","level":"info"}
+{"message":"list was deleted","level":"info"}
+{"message":"list was deleted","level":"info"}
+{"message":"list was deleted","level":"info"}
+{"message":"list was deleted","level":"info"}
