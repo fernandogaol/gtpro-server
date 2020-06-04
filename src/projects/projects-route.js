@@ -29,24 +29,15 @@ projectsRouter
           .send({ error: { message: `${field} is required` } });
       }
     }
-
-    // ProjectsService.projectExists(req.app.get('db'), title).then(
-    //   (projectExists) => {
-    //     if (projectExists)
-    //       return res.status(400).json({ error: `project name already exists` });
-
-        ProjectsService.insertProject(req.app.get('db'), newProject)
-          .then((project) => {
-            logger.info(`new project created with id number ${project.id}`);
-            res
-              .status(201)
-              .location(`/api/projects/${project.id}`)
-              .json(ProjectsService.serializeProject(project));
-            // .send(project);
-          })
-          .catch(next);
-    //   }
-    // );
+    ProjectsService.insertProject(req.app.get('db'), newProject)
+      .then((project) => {
+        logger.info(`new project created with id number ${project.id}`);
+        res
+          .status(201)
+          .location(`/api/projects/${project.id}`)
+          .json(ProjectsService.serializeProject(project));
+      })
+      .catch(next);
   });
 
 projectsRouter
@@ -79,24 +70,18 @@ projectsRouter
         },
       });
     }
-    ProjectsService.projectExists(req.app.get('db'), title).then(
-      (projectExists) => {
-        if (projectExists)
-          return res.status(400).json({ error: `project name already exists` });
-
-        ProjectsService.updateProject(
-          req.app.get('db'),
-          req.params.project_id,
-          projectToUpdate
-        )
-          .then((projetUpdate) => {
-            logger.info('project was updated');
-            res.status(204).end();
-          })
-          .catch(next);
-      }
-    );
+    ProjectsService.updateProject(
+      req.app.get('db'),
+      req.params.project_id,
+      projectToUpdate
+    )
+      .then((projetUpdate) => {
+        logger.info('project was updated');
+        res.status(204).end();
+      })
+      .catch(next);
   });
+
 projectsRouter
   .route('/user/:user_id')
   .all(checkUserProjectExists)
