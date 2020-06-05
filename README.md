@@ -1,26 +1,94 @@
-# Express Boilerplate!
+# It Takes A Village
 
-This is a boilerplate project used for starting new projects!
+> A community based altruistic application
 
-## Set up
+[![Build Status][travis-image]][travis-url]
+[![NPM Version][npm-image]][npm-url]
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+## Live App link
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+<<<<<<< HEAD
 
-## Scripts
+- # https://itav-app.now.sh/login
+- https://itav-app.now.sh/
 
-Start the application `npm start`
+  > > > > > > > master
 
-Start nodemon for the application `npm run dev`
+- Client deployed on zeit
+- Server deployed on Heroku
 
-Run the tests `npm test`
+## App Images
 
-## Deploying
+<p align="center">
+  <img width="223" height="395.5" src="assets/Login.png">
+  <img width="223" height="395.5" src="assets/Registration.png">
+  <img width="223" height="395.5" src="assets/Landing.png">
+  <img width="223" height="395.5" src="assets/Dashboard.png">
+  <img width="223" height="395.5" src="assets/CreateStory.png">
+</p>
 
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
+## Summary
+
+It Takes a Village is a community based altruism application that lets users notify their community that they are in need of assistance, be it food, clothing, transportation, etc. A user can post a story explaining what kind of help they are in need of, and other users in their real world "community" (based off geo-location proximity) can indicate whether they are able to provide aid, or can share to others in their off-app communities that might be able to help.
+
+## Technology Stack
+
+### Front End
+
+- HTML5
+- CSS
+- JavaScript
+- React
+- Enzyme
+- Redux
+
+### Back End
+
+- Node.js
+- Express
+- Mocha
+- Chai
+- PostgreSQL
+- Bcryptjs
+- Passport
+- JWT Authentication
+
+### Development Environment
+
+- Git
+- GitHub
+- Postman
+- DBeaver
+- Visual Studio Code
+- GitHub Projects
+
+## API Documentation
+
+### API endpoints
+
+- POST to '/api/auth/login' authenticate and login returning user
+- POST to '/api/auth/refresh' refresh Auth token
+- POST to '/api/users' posts new user info into database
+- GET to '/api/users' get all users from database
+- GET to '/api/user/:id' get all stories by id
+- DELETE to '/api/user/:id' delete a user by id
+- PATCH to '/api/user/:id' update a user by id
+- GET to '/api/story' get all stories from database
+- POST to '/api/story' posts a story to the database
+- GET to '/api/story/:id' get all stories by id
+- DELETE to '/api/story/:id' delete a story by id
+- PATCH to '/api/story/:id' update a story by id
+- GET to '/api/comment' get all comments from database
+- POST to '/api/comment' posts a comment to the database
+- GET to '/api/comment/:id' get all comments by id
+- DELETE to '/api/comment/:id' delete a comment by id
+- PATCH to '/api/comment/:id' update a comment by id
+
+<!-- Markdown link & img dfn's -->
+
+[npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/datadog-metrics
+[travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
+[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
+
+---

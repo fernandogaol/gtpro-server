@@ -1,5 +1,3 @@
-// const jwt = require('jsonwebtoken');
-
 function makeUsersArray() {
   return [
     {
@@ -39,25 +37,21 @@ function makeUsersArray() {
 function makeProjectsArray(users) {
   return [
     {
-      id: 1,
       title: 'test1',
       user_id: users[0].id,
       date_created: '2029-01-22T16:28:32.615Z',
     },
     {
-      id: 2,
       title: 'test2',
       user_id: users[1].id,
       date_created: '2029-01-22T16:28:32.615Z',
     },
     {
-      id: 3,
       title: 'test3',
       user_id: users[2].id,
       date_created: '2029-01-22T16:28:32.615Z',
     },
     {
-      id: 4,
       title: 'test4',
       user_id: users[3].id,
       date_created: '2029-01-22T16:28:32.615Z',
@@ -67,27 +61,47 @@ function makeProjectsArray(users) {
 function makeListsArray() {
   return [
     {
-      id: 1,
       project_id: 1,
       title: 'test1',
       date_created: '2029-01-22T16:28:32.615Z',
     },
     {
-      id: 2,
       project_id: 1,
       title: 'test1',
       date_created: '2029-01-22T16:28:32.615Z',
     },
     {
-      id: 3,
       project_id: 1,
       title: 'test1',
       date_created: '2029-01-22T16:28:32.615Z',
     },
     {
-      id: 4,
       project_id: 1,
       title: 'test1',
+      date_created: '2029-01-22T16:28:32.615Z',
+    },
+  ];
+}
+function makeCardsArray() {
+  return [
+    {
+      list_id: 1,
+      content: 'card 1',
+      date_created: '2029-01-22T16:28:32.615Z',
+    },
+    {
+      list_id: 2,
+      content: 'card 2',
+      date_created: '2029-01-22T16:28:32.615Z',
+    },
+    {
+      list_id: 1,
+      content: 'card 3',
+      date_created: '2029-01-22T16:28:32.615Z',
+    },
+    {
+      list_id: 2,
+      content: 'card 4',
       date_created: '2029-01-22T16:28:32.615Z',
     },
   ];
@@ -97,8 +111,9 @@ function makeFixtures() {
   const testUsers = makeUsersArray();
   const testProjects = makeProjectsArray(testUsers);
   const testLists = makeListsArray();
+  const testCards = makeCardsArray();
 
-  return { testUsers, testProjects, testLists };
+  return { testUsers, testProjects, testLists, testCards };
 }
 //WILL BE UTILIZED IN THE FUTURE
 
@@ -139,7 +154,7 @@ module.exports = {
   makeUsersArray,
   makeListsArray,
   makeProjectsArray,
+  makeCardsArray,
   makeFixtures,
   cleanTables,
-  // makeAuthHeader,
 };

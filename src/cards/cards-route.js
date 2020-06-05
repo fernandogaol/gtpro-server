@@ -2,8 +2,6 @@ const express = require('express');
 const CardsService = require('./cards-service');
 const logger = require('../logger');
 const bodyParser = express.json();
-// const { requireAuth } = require('../middleware/jwt-auth');
-// needs API KEY set
 
 const cardsRouter = express.Router();
 
@@ -29,10 +27,6 @@ cardsRouter
       }
     }
 
-    // CardsService.cardExists(req.app.get('db'), content).then((cardExists) => {
-    //   if (cardExists)
-    //     return res.status(400).json({ error: `card name already exists` });
-
     return CardsService.insertCard(req.app.get('db'), newCard).then((card) => {
       logger.info(`new project created with id number ${card.id}`);
       res
@@ -41,7 +35,6 @@ cardsRouter
         .json(CardsService.serializeCard(card));
     });
   });
-// });
 
 cardsRouter
   .route('/:card_id')
@@ -58,6 +51,7 @@ cardsRouter
       })
       .catch(next);
   })
+  //PATCH METHOD WILL BE USED IN THE FUTURE
   .patch(bodyParser, (req, res, next) => {
     const { content, list_id } = req.body;
     const cardToUpdate = { content, list_id };
@@ -72,23 +66,14 @@ cardsRouter
         },
       });
     }
-
-    CardsService.cardExists(req.app.get('db'), content).then((cardExists) => {
-      if (cardExists)
-        return res.status(400).json({ error: `card name already exists` });
-
-      CardsService.updateCard(
-        req.app.get('db'),
-        req.params.card_id,
-        cardToUpdate
-      )
-        .then((cardUpdate) => {
-          logger.info('card was updated');
-          res.status(204).end();
-        })
-        .catch(next);
-    });
+    CardsService.updateCard(req.app.get('db'), req.params.card_id, cardToUpdate)
+      .then((cardUpdate) => {
+        logger.info('card was updated');
+        res.status(204).end();
+      })
+      .catch(next);
   });
+
 cardsRouter.route('/list/:list_id').get((req, res, next) => {
   const { list_id } = req.params;
   CardsService.getCardByListId(req.app.get('db'), list_id)

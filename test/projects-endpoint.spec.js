@@ -1,14 +1,12 @@
 const knex = require('knex');
-// const bcrypt = require('bcryptjs');
 const app = require('../src/app');
 const helpers = require('./test-helpers');
 
-describe.only('Projects Endpoint', function () {
+describe('Projects Endpoint', function () {
   let db;
 
   const { testProjects, testUsers } = helpers.makeFixtures();
   const testProject = testProjects[0];
-  const testUser = testUsers[0];
 
   before('make knex instance', () => {
     db = knex({
@@ -53,13 +51,10 @@ describe.only('Projects Endpoint', function () {
         });
         context(`Happy path`, () => {
           it(`responds 201, serialized project`, () => {
-            const { testUsers } = helpers.makeFixtures();
-            const testUser = testUsers[0];
             const newProject = {
               title: 'test title',
               user_id: testProject.user_id,
             };
-            console.log('user id is:', newProject.user_id);
             return supertest(app)
               .post('/api/projects')
               .send(newProject)
@@ -68,7 +63,6 @@ describe.only('Projects Endpoint', function () {
                 expect(res.body).to.have.property('id');
                 expect(res.body.title).to.eql(newProject.title);
                 expect(res.body.user_id).to.eql(newProject.user_id);
-                // expect(res.body.user.id).to.eql(testUser.id);
                 expect(res.headers.location).to.eql(
                   `/api/projects/${res.body.id}`
                 );
@@ -87,7 +81,6 @@ describe.only('Projects Endpoint', function () {
                   .then((row) => {
                     expect(row.title).to.eql(newProject.title);
                     expect(row.user_id).to.eql(newProject.user_id);
-                    // expect(row.user.id).to.eql(testUser.id);
                     const expectedDate = new Date().toLocaleString();
                     const actualDate = new Date(
                       row.date_created

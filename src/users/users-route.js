@@ -5,6 +5,7 @@ const logger = require('../logger');
 // needs API KEY set
 //passwords need to be hashed
 //authorization and authentication needs to be added
+// THE ABOVE WILL BE DONE IN THE FUTURE
 
 const usersRouter = express.Router();
 const jsonBodyParser = express.json();
@@ -32,12 +33,6 @@ usersRouter
       })
       .catch(next);
   });
-// usersRouter
-//   .route('/:user_name')
-//   .all(checkUserNameExists)
-//   .get((req, res) => {
-//     res.json(UsersService.serializeUser(res.user));
-//   });
 
 usersRouter.post('/', jsonBodyParser, (req, res, next) => {
   const { password, user_name, full_name } = req.body;
@@ -59,7 +54,7 @@ usersRouter.post('/', jsonBodyParser, (req, res, next) => {
 
       // return UsersService.hashPassword(password)
       //   .then(hashedPassword => {
-      //     // PASSWORDS STILL NEED TO BE HASHED
+      //     // PASSWORDS STILL NEED TO BE HASHED - WILL BE HASHED IN THE FUTURE
       const newUser = {
         user_name,
         password,
@@ -99,24 +94,5 @@ async function checkUserExists(req, res, next) {
     next(error);
   }
 }
-// async function checkUserNameExists(req, res, next) {
-//   try {
-//     const user = await UsersService.getUserByUserName(
-//       req.app.get('db'),
-//       req.params.user_name
-//     );
-
-//     if (!user) {
-//       logger.error(`user name doesn't exist`);
-//       return res.status(404).json({
-//         error: `user name doesn't exist`,
-//       });
-//     }
-//     res.user = user;
-//     next();
-//   } catch (error) {
-//     next(error);
-//   }
-// }
 
 module.exports = usersRouter;

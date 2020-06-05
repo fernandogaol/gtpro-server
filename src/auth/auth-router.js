@@ -21,6 +21,7 @@ authRouter.post('/login', jsonBodyParser, (req, res, next) => {
           error: 'Incorrect username or password',
         });
       }
+      //WILL BE USED IN THE FUTURE
       // AuthService.comparePasswords(loginUser.password, dbUser.password);
       if (loginUser.password !== dbUser.password) {
         return res.status(400).json({
@@ -39,7 +40,7 @@ authRouter.post('/login', jsonBodyParser, (req, res, next) => {
     .catch(next);
 });
 
-//WILL BE UTILIZED IN THE FUTURE
+//WILL BE USED IN THE FUTURE
 
 // authRouter.post('/refresh', requireAuth, (req, res) => {
 //   const sub = req.user.user_name;

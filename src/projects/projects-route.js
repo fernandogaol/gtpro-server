@@ -2,10 +2,6 @@ const express = require('express');
 const ProjectsService = require('./projects-service');
 const logger = require('../logger');
 const bodyParser = express.json();
-const requireAuth = require('../../src/middleware/jwt-auth');
-// const { requireAuth } = require('../middleware/jwt-auth');
-// needs API KEY set
-
 const projectsRouter = express.Router();
 
 projectsRouter

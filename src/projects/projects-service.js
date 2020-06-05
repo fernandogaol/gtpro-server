@@ -1,5 +1,4 @@
 const xss = require('xss');
-// const Treeize = require('treeize');
 
 const ProjectsService = {
   projectExists(db, title) {

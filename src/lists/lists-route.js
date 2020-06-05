@@ -2,9 +2,6 @@ const express = require('express');
 const ListsService = require('./lists-service');
 const logger = require('../logger');
 const bodyParser = express.json();
-// const { requireAuth } = require('../middleware/jwt-auth');
-// needs API KEY set
-
 const listsRouter = express.Router();
 
 listsRouter
@@ -54,6 +51,7 @@ listsRouter
       })
       .catch(next);
   })
+  //PATCH METHOD WILL BE USED IN THE FUTURE
   .patch(bodyParser, (req, res, next) => {
     const { title, project_id } = req.body;
     const listToUpdate = { title, project_id };
