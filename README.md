@@ -8,9 +8,10 @@
 ## Live App link
 
 - # https://gtpro-app.com/
-- https://itav-app.now.sh/
 
-  > > > > > > > master
+## Live Api Link
+
+- # https://sheltered-savannah-63454.herokuapp.com
 
 - Client deployed on zeit
 - Server deployed on Heroku
@@ -18,7 +19,7 @@
 ## App Images
 
 <p align="center">
-  <img width="223" height="395.5" src="/assets/landing-page.png">
+  <img width="223" height="395.5" src="assets/landing-page.png">
   <img width="223" height="395.5" src="assets/login-page.png">
   <img width="223" height="395.5" src="assets/project-lists-and-cards.png">
   <img width="223" height="395.5" src="assets/registration-page.png">
