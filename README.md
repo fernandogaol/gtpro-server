@@ -1,4 +1,4 @@
-# It Takes A Village
+# GTPro
 
 > A community based altruistic application
 
@@ -7,9 +7,7 @@
 
 ## Live App link
 
-<<<<<<< HEAD
-
-- # https://itav-app.now.sh/login
+- # https://gtpro-app.com/
 - https://itav-app.now.sh/
 
   > > > > > > > master
@@ -20,16 +18,16 @@
 ## App Images
 
 <p align="center">
-  <img width="223" height="395.5" src="assets/Login.png">
-  <img width="223" height="395.5" src="assets/Registration.png">
-  <img width="223" height="395.5" src="assets/Landing.png">
-  <img width="223" height="395.5" src="assets/Dashboard.png">
-  <img width="223" height="395.5" src="assets/CreateStory.png">
+  <img width="223" height="395.5" src="/assets/landing-page.png">
+  <img width="223" height="395.5" src="assets/login-page.png">
+  <img width="223" height="395.5" src="assets/project-lists-and-cards.png">
+  <img width="223" height="395.5" src="assets/registration-page.png">
+  <img width="223" height="395.5" src="assets/user-dashboard.png">
 </p>
 
 ## Summary
 
-It Takes a Village is a community based altruism application that lets users notify their community that they are in need of assistance, be it food, clothing, transportation, etc. A user can post a story explaining what kind of help they are in need of, and other users in their real world "community" (based off geo-location proximity) can indicate whether they are able to provide aid, or can share to others in their off-app communities that might be able to help.
+GTPro is a project management application that allows users to keep track of their personal and work to-do lists and projects. When logged in, a user can start creating projects in his/her board in order to keep track of his/her to-do lists. Each project gives the user the ability to create lists and to add cards to each list accordingly.
 
 ## Technology Stack
 
@@ -49,7 +47,6 @@ It Takes a Village is a community based altruism application that lets users not
 - Mocha
 - Chai
 - PostgreSQL
-- Bcryptjs
 - Passport
 - JWT Authentication
 
@@ -66,23 +63,38 @@ It Takes a Village is a community based altruism application that lets users not
 
 ### API endpoints
 
+All endpoints have CRUD methods
+All endpoints:
+'/api/auth'
+'/api/users'
+'/api/cards'
+'/api/lists'
+'/api/projects'
+
 - POST to '/api/auth/login' authenticate and login returning user
-- POST to '/api/auth/refresh' refresh Auth token
-- POST to '/api/users' posts new user info into database
+- POST to '/api/users' inserts a new user into database
 - GET to '/api/users' get all users from database
-- GET to '/api/user/:id' get all stories by id
+- GET to '/api/user/:id' get a user by id
 - DELETE to '/api/user/:id' delete a user by id
 - PATCH to '/api/user/:id' update a user by id
-- GET to '/api/story' get all stories from database
-- POST to '/api/story' posts a story to the database
-- GET to '/api/story/:id' get all stories by id
-- DELETE to '/api/story/:id' delete a story by id
-- PATCH to '/api/story/:id' update a story by id
-- GET to '/api/comment' get all comments from database
-- POST to '/api/comment' posts a comment to the database
-- GET to '/api/comment/:id' get all comments by id
-- DELETE to '/api/comment/:id' delete a comment by id
-- PATCH to '/api/comment/:id' update a comment by id
+- GET to '/api/cards' get all cards from database
+- GET to /api/cards/list/:list_id get a card by list id
+- GET to '/api/cards/:card_id' get a card by id
+- POST to '/api/cards' insert a card into the database
+- DELETE to '/api/cards/:card_id' delete a card by id
+- PATCH to '/api/cards/:card_id' update a card by id
+- GET to '/api/lists' get all lists from database
+- GET to /api/lists//project/:project_id get a list by project id
+- GET to '/api/lists/:list_id' get a list by id
+- POST to '/api/lists' insert a list into the database
+- DELETE to '/api/lists/:list_id' delete a list by id
+- PATCH to '/api/lists/:list_id' update a list by id
+- GET to '/api/projects' get all projects from database
+- GET to /api/projects/user/:user_id get a project by user id from database
+- GET to '/api/projects/:project_id' get a project by id from database
+- POST to '/api/projects' insert a project into the database
+- DELETE to '/api/projects/:project_id' delete a project by id from database
+- PATCH to '/api/projects/:project_id' update a project by id from database
 
 <!-- Markdown link & img dfn's -->
 
