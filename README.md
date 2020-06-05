@@ -1,6 +1,6 @@
 # GTPro
 
-> A community based altruistic application
+> A project management application
 
 [![Build Status][travis-image]][travis-url]
 [![NPM Version][npm-image]][npm-url]
