@@ -21,9 +21,9 @@
 <p align="center">
   <img width="223" height="395.5" src="assets/landing-page.png">
   <img width="223" height="395.5" src="assets/login-page.png">
-  <img width="223" height="395.5" src="assets/project-lists-and-cards.png">
   <img width="223" height="395.5" src="assets/registration-page.png">
   <img width="223" height="395.5" src="assets/user-dashboard.png">
+  <img width="223" height="395.5" src="assets/project-lists-and-cards.png">
 </p>
 
 ## Summary
