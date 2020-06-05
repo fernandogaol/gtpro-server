@@ -64,13 +64,13 @@ GTPro is a project management application that allows users to keep track of the
 
 ### API endpoints
 
-All endpoints have CRUD methods
-All endpoints:
-'/api/auth'
-'/api/users'
-'/api/cards'
-'/api/lists'
-'/api/projects'
+- All endpoints have CRUD methods
+- All endpoints:
+- '/api/auth'
+- '/api/users'
+- '/api/cards'
+- '/api/lists'
+- gi'/api/projects'
 
 - POST to '/api/auth/login' authenticate and login returning user
 - POST to '/api/users' inserts a new user into database
