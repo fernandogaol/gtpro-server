@@ -36,30 +36,58 @@ function makeUsersArray() {
     },
   ];
 }
-function makeProjectsArray() {
+function makeProjectsArray(users) {
   return [
     {
       id: 1,
       title: 'test1',
-      user_id: 1,
+      user_id: users[0].id,
       date_created: '2029-01-22T16:28:32.615Z',
     },
     {
       id: 2,
       title: 'test2',
-      user_id: 2,
+      user_id: users[1].id,
       date_created: '2029-01-22T16:28:32.615Z',
     },
     {
       id: 3,
       title: 'test3',
-      user_id: 3,
+      user_id: users[2].id,
       date_created: '2029-01-22T16:28:32.615Z',
     },
     {
       id: 4,
       title: 'test4',
-      user_id: 4,
+      user_id: users[3].id,
+      date_created: '2029-01-22T16:28:32.615Z',
+    },
+  ];
+}
+function makeListsArray() {
+  return [
+    {
+      id: 1,
+      project_id: 1,
+      title: 'test1',
+      date_created: '2029-01-22T16:28:32.615Z',
+    },
+    {
+      id: 2,
+      project_id: 1,
+      title: 'test1',
+      date_created: '2029-01-22T16:28:32.615Z',
+    },
+    {
+      id: 3,
+      project_id: 1,
+      title: 'test1',
+      date_created: '2029-01-22T16:28:32.615Z',
+    },
+    {
+      id: 4,
+      project_id: 1,
+      title: 'test1',
       date_created: '2029-01-22T16:28:32.615Z',
     },
   ];
@@ -67,9 +95,10 @@ function makeProjectsArray() {
 
 function makeFixtures() {
   const testUsers = makeUsersArray();
-  const testProjects = makeProjectsArray();
+  const testProjects = makeProjectsArray(testUsers);
+  const testLists = makeListsArray();
 
-  return { testUsers, testProjects };
+  return { testUsers, testProjects, testLists };
 }
 //WILL BE UTILIZED IN THE FUTURE
 
@@ -108,6 +137,8 @@ function cleanTables(db) {
 
 module.exports = {
   makeUsersArray,
+  makeListsArray,
+  makeProjectsArray,
   makeFixtures,
   cleanTables,
   // makeAuthHeader,

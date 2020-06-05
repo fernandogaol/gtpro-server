@@ -3,7 +3,7 @@ const knex = require('knex');
 const app = require('../src/app');
 const helpers = require('./test-helpers');
 
-describe('Projects Endpoint', function () {
+describe.only('Projects Endpoint', function () {
   let db;
 
   const { testProjects, testUsers } = helpers.makeFixtures();
@@ -53,10 +53,13 @@ describe('Projects Endpoint', function () {
         });
         context(`Happy path`, () => {
           it(`responds 201, serialized project`, () => {
+            const { testUsers } = helpers.makeFixtures();
+            const testUser = testUsers[0];
             const newProject = {
               title: 'test title',
-              user_id: testProjects.user_id,
+              user_id: testProject.user_id,
             };
+            console.log('user id is:', newProject.user_id);
             return supertest(app)
               .post('/api/projects')
               .send(newProject)
@@ -65,9 +68,15 @@ describe('Projects Endpoint', function () {
                 expect(res.body).to.have.property('id');
                 expect(res.body.title).to.eql(newProject.title);
                 expect(res.body.user_id).to.eql(newProject.user_id);
+                // expect(res.body.user.id).to.eql(testUser.id);
                 expect(res.headers.location).to.eql(
                   `/api/projects/${res.body.id}`
                 );
+                const expectedDate = new Date().toLocaleString();
+                const actualDate = new Date(
+                  res.body.date_created
+                ).toLocaleString();
+                expect(actualDate).to.eql(expectedDate);
               })
               .expect((res) =>
                 db
@@ -78,9 +87,12 @@ describe('Projects Endpoint', function () {
                   .then((row) => {
                     expect(row.title).to.eql(newProject.title);
                     expect(row.user_id).to.eql(newProject.user_id);
-                  })
-                  .then((compareMatch) => {
-                    expect(compareMatch).to.be.true;
+                    // expect(row.user.id).to.eql(testUser.id);
+                    const expectedDate = new Date().toLocaleString();
+                    const actualDate = new Date(
+                      row.date_created
+                    ).toLocaleString();
+                    expect(actualDate).to.eql(expectedDate);
                   })
               );
           });

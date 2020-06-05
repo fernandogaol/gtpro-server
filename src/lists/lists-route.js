@@ -29,20 +29,13 @@ listsRouter
       }
     }
 
-    ListsService.listExists(req.app.get('db'), title).then((listExists) => {
-      if (listExists)
-        return res.status(400).json({ error: `list name already exists` });
-
-      return ListsService.insertList(req.app.get('db'), newList).then(
-        (list) => {
-          logger.info(`new list created with id number ${list.id}`);
-          res
-            .status(201)
-            .location(`/api/lists/${list.id}`)
-            .json(ListsService.serializeList(list));
-          // .send(project);
-        }
-      );
+    return ListsService.insertList(req.app.get('db'), newList).then((list) => {
+      logger.info(`new list created with id number ${list.id}`);
+      res
+        .status(201)
+        .location(`/api/lists/${list.id}`)
+        .json(ListsService.serializeList(list));
+      // .send(project);
     });
   });
 
@@ -76,22 +69,14 @@ listsRouter
       });
     }
 
-    ListsService.listExists(req.app.get('db'), title).then((listExists) => {
-      if (listExists)
-        return res.status(400).json({ error: `list name already exists` });
-
-      ListsService.updateList(
-        req.app.get('db'),
-        req.params.list_id,
-        listToUpdate
-      )
-        .then((listUpdate) => {
-          logger.info('list was updated');
-          res.status(204).end();
-        })
-        .catch(next);
-    });
+    ListsService.updateList(req.app.get('db'), req.params.list_id, listToUpdate)
+      .then((listUpdate) => {
+        logger.info('list was updated');
+        res.status(204).end();
+      })
+      .catch(next);
   });
+
 listsRouter.route('/project/:project_id').get((req, res, next) => {
   const { project_id } = req.params;
   ListsService.getListByProjectId(req.app.get('db'), project_id)
