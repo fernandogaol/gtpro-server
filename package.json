@@ -16,7 +16,10 @@
   "keywords": [],
   "engines": {
     "node": ">=12.14.0",
-    "npm": ">=6.13.4"
+    "npm": ">=6.13.4",
+    "knex": "^0.21.1",
+    "objection": "^2.1.3",
+    "pg": "^8.0.3"
   },
   "author": "Fernando Gaol Filho",
   "license": "ISC",
