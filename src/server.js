@@ -6,7 +6,6 @@ const db = knex({
   client: 'pg',
   connection: DATABASE_URL,
 });
-knex.end();
 
 app.set('db', db);
 
