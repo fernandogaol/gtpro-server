@@ -1,9 +1,9 @@
 # GTPro
 
 > A project management application
-
+<!-- 
 [![Build Status][travis-image]][travis-url]
-[![NPM Version][npm-image]][npm-url]
+[![NPM Version][npm-image]][npm-url] -->
 
 ## Live App link
 
@@ -17,14 +17,14 @@
 - Server deployed on Heroku
 
 ## App Images
-
+<!-- 
 <p align="center">
   <img width="223" height="450" src="assets/landing-page.png">
   <img width="223" height="450" src="assets/login-page.png">
   <img width="223" height="450" src="assets/registration-page.png">
   <img width="223" height="450" src="assets/user-dashboard.png">
   <img width="223" height="450" src="assets/project-lists-and-cards.png">
-</p>
+</p> -->
 
 ## Summary
 
@@ -90,10 +90,10 @@ GTPro is a project management application that allows users to keep track of the
 - PATCH to '/api/projects/:project_id' update a project by id from database
 
 <!-- Markdown link & img dfn's -->
-
+<!-- 
 [npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/datadog-metrics
 [travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
-[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
+[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics -->
 
 ---
