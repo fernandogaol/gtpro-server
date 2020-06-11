@@ -28,7 +28,7 @@
 
 ## Summary
 
-GTPro is a project management application that allows users to keep track of their personal and work to-do lists and projects. When logged in, a user can start creating projects in his/her board in order to keep track of his/her to-do lists. Each project gives the user the ability to create lists and to add cards to each list accordingly.
+GTPro is a project management application that allows people to keep track of their personal and work to-do lists and projects. When logged in, one can start creating projects in his/her board in order to keep track of his/her to-do lists. Each project gives peoepl the ability to create lists and to add cards to each list accordingly.
 
 ## Technology Stack
 
